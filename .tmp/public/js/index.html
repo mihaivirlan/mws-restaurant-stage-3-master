@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2F3BA2">
+  <!--<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css">-->
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/desktop.css" media="(min-device-width: 1280px)">
+  <link rel="stylesheet" href="../css/tablet.css" media="(min-device-width: 800px) and (max-device-width: 1279px)">
+  <link rel="stylesheet" href="../css/mobile.css" media="screen and  (max-width: 799px)">
+  <link rel="manifest" href="../manifest.json">
+  <link rel="icon" type="image/png" href="../icons/icon-512.png" sizes="16x16">
+  <title>Restaurant Reviews</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <h1><a href="../js">Restaurant Reviews</a></h1>
+    </nav>
+  </header>
+
+  <main id="maincontent">
+    <section id="map-container">
+      <div id="indexmap" role="application" aria-label="Map with restaurants"></div>
+    </section>
+    <section>
+      <div class="filter-options">
+        <h2>Filter Results</h2>
+        <select id="neighborhoods-select" name="neighborhoods" aria-label="Select Restaurant" onchange="updateRestaurants()">
+          <option value="all">All Neighborhoods</option>
+        </select>
+
+        <select id="cuisines-select" name="cuisines" aria-label="Select Cuisines" onchange="updateRestaurants()">
+          <option value="all">All Cuisines</option>
+        </select>
+      </div>
+      <ul id="restaurants-list"></ul>
+    </section>
+  </main>
+
+  <footer id="footer">
+    Copyright (c) 2017 <a href="../js"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+  </footer>
+
+  <script src="main.js"></script>
+  <script src="dbhelper.js"></script>
+  <script src="app.js"></script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFbWmcZGxGrTfb2ptRc-oYljYkeqx--RI&libraries=places&callback=initMap"></script>
+
+</body>
+
+</html>
