@@ -173,3 +173,155 @@
         padding: 25px 30px 25px 30px;
     }
 }
+/*Custom*/
+
+/*Modal Custom*/
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    margin-top: 5%;
+    border-radius: 5px;
+}
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*!*Form Custom*!*/
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=submit] {
+    /*width: 100%;*/
+    background-color: #f18200;
+    color: white;
+    padding: 14px 14px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12pt;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    outline: none;
+}
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+#message {
+    width: 75%;
+    height: 100px;
+}
+#myBtn {
+    background: #f18200;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 30px;
+    font-size: 12pt;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    outline: none;
+}
+.message {
+    display: inline-flex;
+    width: 100%;
+}
+.message p {
+    width: 100%;
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+.name-input {
+    width: 25%;
+}
+.name-input p {
+    font-size: 14px;
+    margin: 0;
+    font-weight: bold;
+}
+.label-name {
+    width: 100%;
+    display: inline-flex;
+}
+.label-input {
+    width: 53%;
+}
+
+.label-input p {
+    margin: 0;
+}
+.rating {
+    display: inline-flex;
+    margin: 25px 0 25px 0;
+    width: 100%;
+}
+.rating p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+.rating img {
+    padding: 0 5px 0 5px;
+}
+.rating-text {
+    width: 25%;
+}
+.rating-stars {
+    width: 50%;
+    display: inline-flex;
+}
+.rating-stars img {
+    height: 24px;
+    cursor: pointer;
+}
+.rating-stars button {
+    cursor: pointer;
+    border: none;
+    margin: 0 1px 0 1px;
+}
+.textarea-text {
+    width: 25%;
+}
+.textarea-input {
+    width: 70%;
+}
+.textarea-input textarea {
+    resize: none;
+}
+/*EndCustom*/

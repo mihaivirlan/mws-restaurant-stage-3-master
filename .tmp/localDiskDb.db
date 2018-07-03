@@ -21,9 +21,11 @@
           "Sunday": "12:00 pm - 4:00 pm, 5:30 pm - 11:00 pm"
         },
         "createdAt": 1504095563444,
-        "updatedAt": "2017-09-14T14:01:27.653Z",
+        "updatedAt": "2018-07-01T21:05:27.096Z",
         "id": 1,
-        "is_favorite": false
+        "is_favorite": "false",
+        "firstname": "",
+        "message": ""
       },
       {
         "name": "Emily",
@@ -45,8 +47,8 @@
           "Sunday": "12:00 pm - 3:00 pm, 5:00 pm - 11:00 pm"
         },
         "createdAt": 1504095568414,
-        "updatedAt": "2017-09-14T14:05:54.800Z",
-        "is_favorite": false,
+        "updatedAt": "2018-07-01T15:18:33.204Z",
+        "is_favorite": "true",
         "id": 2
       },
       {
@@ -69,8 +71,9 @@
           "Sunday": "11:30 am - 2:00 am"
         },
         "createdAt": 1504095571434,
-        "updatedAt": 1504095571434,
-        "id": 3
+        "updatedAt": "2018-07-01T15:18:51.986Z",
+        "id": 3,
+        "is_favorite": "false"
       },
       {
         "name": "Katz's Delicatessen",
@@ -92,8 +95,8 @@
           "Sunday": "Sat - 10:30 pm"
         },
         "createdAt": 1504095567091,
-        "updatedAt": 1504095567091,
-        "is_favorite": false,
+        "updatedAt": "2018-07-01T15:21:42.561Z",
+        "is_favorite": "false",
         "id": 4
       },
       {
@@ -116,8 +119,8 @@
           "Sunday": "10:00 am - 12:00 am"
         },
         "createdAt": 1504095567071,
-        "updatedAt": 1504095567071,
-        "is_favorite": false,
+        "updatedAt": "2018-07-01T15:35:11.091Z",
+        "is_favorite": "true",
         "id": 5
       },
       {
@@ -140,8 +143,8 @@
           "Sunday": "12:00 pm - 9:00 pm"
         },
         "createdAt": 1504095567071,
-        "updatedAt": 1504095567071,
-        "is_favorite": false,
+        "updatedAt": "2018-07-01T15:22:14.861Z",
+        "is_favorite": "false",
         "id": 6
       },
       {
@@ -164,8 +167,8 @@
           "Sunday": "11:30 am - 10:00 pm"
         },
         "createdAt": 1504095567091,
-        "updatedAt": 1504095567091,
-        "is_favorite": false,
+        "updatedAt": "2018-07-01T15:22:20.077Z",
+        "is_favorite": "false",
         "id": 7
       },
       {
@@ -188,8 +191,8 @@
           "Sunday": "10:00 am - 3:00 pm, 5:30 pm - 11:00 pm"
         },
         "createdAt": 1504095567091,
-        "updatedAt": 1504095567091,
-        "is_favorite": false,
+        "updatedAt": "2018-07-01T15:22:24.339Z",
+        "is_favorite": "false",
         "id": 8
       },
       {
@@ -212,8 +215,8 @@
           "Sunday": "5:00 pm - 10:00 pm"
         },
         "createdAt": 1504095567191,
-        "updatedAt": 1504095567191,
-        "is_favorite": false,
+        "updatedAt": "2018-07-01T15:22:28.570Z",
+        "is_favorite": "false",
         "id": 9
       },
       {
@@ -235,9 +238,15 @@
           "Sunday": "11:00 am - 12:00 am"
         },
         "createdAt": 1504095567183,
-        "updatedAt": 1504095567183,
-        "is_favorite": false,
+        "updatedAt": "2018-07-01T15:22:32.624Z",
+        "is_favorite": "false",
         "id": 10
+      },
+      {
+        "createdAt": "2018-07-01T12:25:58.477Z",
+        "updatedAt": "2018-07-01T21:05:58.419Z",
+        "id": 11,
+        "is_favorite": "false"
       }
     ],
     "reviews": [
@@ -510,6 +519,24 @@
         "updatedAt": 1504095567183,
         "rating": 4,
         "comments": "For a Michelin star restaurant, it's fairly priced and the food is fairly good. Started with a strawberry margarita which was good in flavor but not much alcohol. Had the chicken enchiladas with salsa verde and it was really good. Great balance in flavor and a good portion. Extra tasty with their hot sauces. My wife had the lamb but it was a bit too salty for our taste. Although, it was cooked very well and fell off the bone. The highlight of the night was the tres leches cake. Probably the best I've ever had to be honest. Not too sweet and very milky. Overall, one of my top 3 favorite Mexican in NY."
+      },
+      {
+        "restaurant_id": "1",
+        "name": "newReview",
+        "rating": "2",
+        "comments": "my new review",
+        "createdAt": "2018-07-01T20:47:50.109Z",
+        "updatedAt": "2018-07-01T20:47:50.109Z",
+        "id": 31
+      },
+      {
+        "restaurant_id": "1",
+        "name": "newReview",
+        "rating": "2",
+        "comments": "my new review",
+        "createdAt": "2018-07-01T21:03:56.508Z",
+        "updatedAt": "2018-07-01T21:03:56.508Z",
+        "id": 32
       }
     ]
   },
@@ -562,10 +589,10 @@
       "id": 10
     },
     "restaurants": {
-      "id": 10
+      "id": 11
     },
     "reviews": {
-      "id": 30
+      "id": 32
     }
   }
 }

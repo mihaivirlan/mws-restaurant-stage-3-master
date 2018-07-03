@@ -8,7 +8,7 @@ class DBHelper {
    * Change this to restaurants.json file location on your server.
    */
   static get DATABASE_URL() {
-      return "http://localhost/restaurants";
+      return "../restaurants";
   }
 
 
@@ -51,6 +51,7 @@ class DBHelper {
       }
     });
   }
+
 
   /**
    * Fetch restaurants by a cuisine type with proper error handling.

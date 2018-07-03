@@ -1,78 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Normalize.css for better cross-browser consistency -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />-->
-  <!-- Main CSS file -->
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/desktop.css" media="(min-device-width: 1280px)">
-  <link rel="stylesheet" href="../css/tablet.css" media="(min-device-width: 800px) and (max-device-width: 1279px)">
-  <link rel="stylesheet" href="../css/mobile.css" media="screen and  (max-width: 799px)">
-  <link rel="manifest" href="../manifest.json">
-  <link rel="icon" type="image/png" href="../icons/icon-512.png" sizes="16x16">
-  <title>Restaurant Info</title>
+    <!-- Normalize.css for better cross-browser consistency -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <!--<link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />-->
+    <!-- Main CSS file -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/desktop.css" media="(min-device-width: 1280px)">
+    <link rel="stylesheet" href="../css/tablet.css" media="(min-device-width: 800px) and (max-device-width: 1279px)">
+    <link rel="stylesheet" href="../css/mobile.css" media="screen and  (max-width: 799px)">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="icon" type="image/png" href="../icons/icon-512.png" sizes="16x16">
+    <title>Restaurant Info</title>
 </head>
 
 <body class="inside">
-  <!-- Beginning header -->
-  <header>
+<!-- Beginning header -->
+<header>
     <!-- Beginning nav -->
     <nav aria-label="Breadcrumb">
-      <h1><a href="../js">Restaurant Reviews</a></h1>
-      <ul id="breadcrumb">
-        <li><a href="../js/index.html">Home</a></li>
-      </ul>
+        <h1><a href="../js">Restaurant Reviews</a></h1>
+        <ul id="breadcrumb">
+            <li><a href="../js/index.html">Home</a></li>
+        </ul>
     </nav>
     <!-- End nav -->
-  </header>
-  <!-- End header -->
+</header>
+<!-- End header -->
 
-  <!-- Beginning main -->
-  <main id="maincontent">
+<!-- Beginning main -->
+<main id="maincontent">
 
     <section id="map-container">
-      <div id="map" role="application" aria-label="Map with restaurants"></div>
+        <div id="map" role="application" aria-label="Map with restaurants"></div>
     </section>
 
 
     <!-- Beginning restaurant -->
     <section id="restaurant-container">
-      <h2 id="restaurant-name"></h2>
-      <!--<picture>-->
-        <!--<source media="(min-width: 800px)" srcset="head.jpg, head-2x.jpg 2x">-->
-        <!--<source media="(min-width: 450px)" srcset="head-small.jpg, head-small-2x.jpg 2x">-->
-        <!--<img src="head-fb.jpg" srcset="head-fb-2x.jpg 2x" alt="a head carved out of wood">-->
-      <!--</picture>-->
-      <img id="restaurant-img" alt="restaurant image">
-      <p id="restaurant-cuisine"></p>
-      <p id="restaurant-address"></p>
-      <table id="restaurant-hours"></table>
+        <h2 id="restaurant-name"></h2>
+        <img id="restaurant-img" alt="restaurant image">
+        <p id="restaurant-cuisine"></p>
+
+        <img class='fav-image' alt="fav" src="../icons/star-empty.png" onclick="updateFavorite()" data-val="false">
+
+        <p id="restaurant-address"></p>
+        <table id="restaurant-hours"></table>
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn">Write Review</button>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div>
+
+                    <form method="POST" action="">
+
+                      <input type="hidden" class="rating-restaurant" name="restaurant_id" value="">
+
+                        <div class="label-name">
+                            <div class="name-input">
+                                <p><label for="fname">Your Name : </label></p>
+                            </div>
+                            <div class="label-input">
+                                <p><input type="text" id="fname" name="name" placeholder="Your name.."></p>
+                            </div>
+                        </div>
+
+                        <div class="rating">
+                            <div class="rating-text">
+                                <p>Your Rating : </p>
+                            </div>
+
+                            <div class="rating-stars">
+                              <!--  <input type="hidden" class='date-review' value='0' name='date'> -->
+                                <input type="hidden" class='rating-review' value='0' name='rating'>
+                                    <img id="star1" data-star="1" data-value="off" src="../icons/star-empty.png"
+                                         alt="name" onclick="change(this)">
+                                    <img id="star2" data-star="2" data-value="off" src="../icons/star-empty.png"
+                                         alt="name" onclick="change(this)">
+                                    <img id="star3" data-star="3" data-value="off" src="../icons/star-empty.png"
+                                         alt="name" onclick="change(this)">
+                                    <img id="star4" data-star="4" data-value="off" src="../icons/star-empty.png"
+                                         alt="name" onclick="change(this)">
+                                    <img id="star5" data-star="5" data-value="off" src="../icons/star-empty.png"
+                                         alt="name" onclick="change(this)">
+
+                            </div>
+                        </div>
+
+                        <div class="message">
+                            <div class="textarea-text">
+                                <p><label for="message">Your Message : </label></p>
+                            </div>
+
+                            <div class="textarea-input">
+                                <textarea id="message" name="comments" placeholder="Write something.."></textarea>
+                            </div>
+                        </div>
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- end restaurant -->
     <!-- Beginning reviews -->
     <section id="reviews-container">
-      <ul id="reviews-list"></ul>
+        <ul id="reviews-list"></ul>
     </section>
     <!-- End reviews -->
 
-  </main>
-  <!-- End main -->
+</main>
+<!-- End main -->
 
-  <!-- Beginning footer -->
-  <footer id="footer">
+<!-- Beginning footer -->
+<footer id="footer">
     Copyright (c) 2017 <a href="../js"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
-  </footer>
-  <!-- End footer -->
+</footer>
+<!-- End footer -->
 
-  <!-- Beginning scripts -->
-  <!-- Database helpers -->
-  <script src="dbhelper.js"></script>
-  <!-- Main javascript file -->
-  <script src="restaurant_info.js"></script>
-  <!-- Google Maps -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFbWmcZGxGrTfb2ptRc-oYljYkeqx--RI&libraries=places&callback=initMap"></script>
-  <!-- End scripts -->
+<!-- Beginning scripts -->
+<!-- Database helpers -->
+<script src="dbhelper.js"></script>
+<!-- Main javascript file -->
+<script src="restaurant_info.js"></script>
+<!-- Google Maps -->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFbWmcZGxGrTfb2ptRc-oYljYkeqx--RI&libraries=places&callback=initMap"></script>
+<!-- End scripts -->
 
 </body>
 
