@@ -1,6 +1,7 @@
 /**
  * Common database helper functions.
  */
+const API_PATH = 'http://localhost:1337';
 class DBHelper {
 
   /**
@@ -8,7 +9,7 @@ class DBHelper {
    * Change this to restaurants.json file location on your server.
    */
   static get DATABASE_URL() {
-      return "../restaurants";
+      return API_PATH + '/restaurants';
   }
 
 
@@ -146,7 +147,7 @@ class DBHelper {
    * Restaurant page URL.
    */
   static urlForRestaurant(restaurant) {
-    return (`./restaurant.html?id=${restaurant.id}`);
+    return (`../restaurant.html?id=${restaurant.id}`);
   }
 
   /**

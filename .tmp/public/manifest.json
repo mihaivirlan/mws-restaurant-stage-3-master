@@ -3,31 +3,31 @@
   "short_name": "Restaurants",
   "icons": [
     {
-      "src": "/icons/icon-16.png",
+      "src": "/icons/icon-16.webp",
       "sizes": "16x16",
       "type": "image/png"
     },
     {
-      "src": "/icons/icon-64.png",
+      "src": "/icons/icon-64.webp",
       "sizes": "64x64",
       "type": "image/png"
     },
     {
-      "src": "/icons/icon-128.png",
+      "src": "/icons/icon-128.webp",
       "sizes": "128x128",
       "type": "image/png"
     },
     {
-      "src": "/icons/icon-256.png",
+      "src": "/icons/icon-256.webp",
       "sizes": "256x256",
       "type": "image/png"
     },
     {
-      "src": "/icons/icon-512.png",
+      "src": "/icons/icon-512.webp",
       "sizes": "512x512",
       "type": "image/png"
     }],
-  "start_url": "/js/index.html",
+  "start_url": "../index.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#3E4EB8",

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/tablet.css" media="(min-device-width: 800px) and (max-device-width: 1279px)">
     <link rel="stylesheet" href="../css/mobile.css" media="screen and  (max-width: 799px)">
     <link rel="manifest" href="../manifest.json">
-    <link rel="icon" type="image/png" href="../icons/icon-512.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="../icons/icon-512.webp" sizes="16x16">
     <title>Restaurant Info</title>
 </head>
 
@@ -20,9 +20,9 @@
 <header>
     <!-- Beginning nav -->
     <nav aria-label="Breadcrumb">
-        <h1><a href="../js">Restaurant Reviews</a></h1>
+        <h1><a href="../">Restaurant Reviews</a></h1>
         <ul id="breadcrumb">
-            <li><a href="../js/index.html">Home</a></li>
+            <li><a href="../">Home</a></li>
         </ul>
     </nav>
     <!-- End nav -->
@@ -43,7 +43,7 @@
         <img id="restaurant-img" alt="restaurant image">
         <p id="restaurant-cuisine"></p>
 
-        <img class='fav-image' alt="fav" src="../icons/star-empty.png" onclick="updateFavorite()" data-val="false">
+        <img class='fav-image' alt="fav" src="../icons/star-empty.webp" onclick="updateFavorite()" data-val="false">
 
         <p id="restaurant-address"></p>
         <table id="restaurant-hours"></table>
@@ -51,22 +51,26 @@
         <button id="myBtn">Write Review</button>
 
         <!-- The Modal -->
-        <div id="myModal" class="modal">
+        <div tabindex="0" id="myModal" class="modal" role="dialog" aria-labelledby="dialog-title">
             <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
+            <div class="modal-content dialog-window">
+                <button class="close" tabindex="3">&times;</button>
                 <div>
 
                     <form method="POST" action="">
 
                       <input type="hidden" class="rating-restaurant" name="restaurant_id" value="">
 
+                        <h3 id="dialog-title" >
+                            Write your review about this restaurant
+                        </h3>
+
                         <div class="label-name">
                             <div class="name-input">
                                 <p><label for="fname">Your Name : </label></p>
                             </div>
                             <div class="label-input">
-                                <p><input type="text" id="fname" name="name" placeholder="Your name.."></p>
+                                <p><input type="text" id="fname" name="name" placeholder="Your name.." tabindex="1" autofocus required></p>
                             </div>
                         </div>
 
@@ -78,15 +82,15 @@
                             <div class="rating-stars">
                               <!--  <input type="hidden" class='date-review' value='0' name='date'> -->
                                 <input type="hidden" class='rating-review' value='0' name='rating'>
-                                    <img id="star1" data-star="1" data-value="off" src="../icons/star-empty.png"
+                                    <img id="star1" data-star="1" data-value="off" src="../icons/star-empty.webp"
                                          alt="name" onclick="change(this)">
-                                    <img id="star2" data-star="2" data-value="off" src="../icons/star-empty.png"
+                                    <img id="star2" data-star="2" data-value="off" src="../icons/star-empty.webp"
                                          alt="name" onclick="change(this)">
-                                    <img id="star3" data-star="3" data-value="off" src="../icons/star-empty.png"
+                                    <img id="star3" data-star="3" data-value="off" src="../icons/star-empty.webp"
                                          alt="name" onclick="change(this)">
-                                    <img id="star4" data-star="4" data-value="off" src="../icons/star-empty.png"
+                                    <img id="star4" data-star="4" data-value="off" src="../icons/star-empty.webp"
                                          alt="name" onclick="change(this)">
-                                    <img id="star5" data-star="5" data-value="off" src="../icons/star-empty.png"
+                                    <img id="star5" data-star="5" data-value="off" src="../icons/star-empty.webp"
                                          alt="name" onclick="change(this)">
 
                             </div>
@@ -98,13 +102,19 @@
                             </div>
 
                             <div class="textarea-input">
-                                <textarea id="message" name="comments" placeholder="Write something.."></textarea>
+                                <textarea id="message" name="comments" placeholder="Write something.." tabindex="2" autofocus required></textarea>
                             </div>
                         </div>
-                        <input type="submit" value="Submit">
+                        <button type="submit" value="Submit" autofocus>Submit</button>
                     </form>
                 </div>
             </div>
+
+
+
+            <div class="dialog-mask"></div>
+
+
         </div>
     </section>
     <!-- end restaurant -->
@@ -119,15 +129,15 @@
 
 <!-- Beginning footer -->
 <footer id="footer">
-    Copyright (c) 2017 <a href="../js"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+    Copyright (c) 2017 <a href="../"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
 </footer>
 <!-- End footer -->
 
 <!-- Beginning scripts -->
 <!-- Database helpers -->
-<script src="dbhelper.js"></script>
+<script src="../js/dbhelper.js"></script>
 <!-- Main javascript file -->
-<script src="restaurant_info.js"></script>
+<script src="../js/restaurant_info.js"></script>
 <!-- Google Maps -->
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFbWmcZGxGrTfb2ptRc-oYljYkeqx--RI&libraries=places&callback=initMap"></script>

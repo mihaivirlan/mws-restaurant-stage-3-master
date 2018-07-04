@@ -9,17 +9,14 @@
   <link rel="stylesheet" href="../css/tablet.css" media="(min-device-width: 800px) and (max-device-width: 1279px)">
   <link rel="stylesheet" href="../css/mobile.css" media="screen and  (max-width: 799px)">
   <link rel="manifest" href="../manifest.json">
-  <link rel="icon" type="image/png" href="../icons/icon-512.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="../icons/icon-512.webp" sizes="16x16">
   <title>Restaurant Reviews</title>
-  <style>
-
-  </style>
 </head>
 
 <body>
   <header>
     <nav>
-      <h1><a href="../js">Restaurant Reviews</a></h1>
+      <h1><a href="../">Restaurant Reviews</a></h1>
     </nav>
   </header>
 
@@ -43,14 +40,26 @@
   </main>
 
   <footer id="footer">
-    Copyright (c) 2017 <a href="../js"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+    Copyright (c) 2017 <a href="../"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
 
-  <script src="main.js"></script>
-  <script src="dbhelper.js"></script>
-  <script src="app.js"></script>
+  <script src="../app.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/dbhelper.js"></script>
+
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFbWmcZGxGrTfb2ptRc-oYljYkeqx--RI&libraries=places&callback=initMap"></script>
+
+  <script>
+      document.addEventListener("DOMContentLoaded", function(event) {
+          //updateRestaurants();
+
+          fetchNeighborhoods()
+          fetchCuisines();
+
+
+      });
+  </script>
 
 </body>
 

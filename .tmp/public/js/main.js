@@ -81,10 +81,36 @@ window.initMap = () => {
     center: loc,
     scrollwheel: false
   });
-  updateRestaurants();
-  fetchNeighborhoods();
-  fetchCuisines();
+    updateRestaurants();
 };
+
+
+lazyLoading = () => {
+    var lazyImages = [].slice.call(document.querySelectorAll('img.lazy'));
+    lazyImages.forEach(img => {console.log(img)});
+
+    if ("IntersectionObserver" in window) {
+        let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    console.log(entry.target);
+                    let lazyImage = entry.target;
+                    lazyImage.src = lazyImage.dataset.src;
+                    lazyImage.srcset = lazyImage.dataset.srcset;
+                    lazyImage.classList.remove("lazy");
+                    lazyImageObserver.unobserve(lazyImage);
+                }
+            });
+        });
+
+        lazyImages.forEach(function(lazyImage) {
+            lazyImageObserver.observe(lazyImage);
+        });
+    } else {
+        // Possibly fall back to a more compatible method here
+    }
+
+}
 
 
 
@@ -107,8 +133,10 @@ updateRestaurants = () => {
     } else {
       resetRestaurants(restaurants);
       fillRestaurantsHTML();
+      //lazyLoading();  //TODO: implement later
     }
   })
+
 };
 
 /**
@@ -145,8 +173,14 @@ createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
   const image = document.createElement('img');
-  image.className = 'restaurant-img';
+   image.className = 'lazy restaurant-img';
+  // image.setAttribute('src','../img/undefined.webp');
+  // image.setAttribute('data-src', DBHelper.imageUrlForRestaurant(restaurant));
+  // image.setAttribute('data-srcset', DBHelper.imageUrlForRestaurant(restaurant) + ' 2x, ' + '../img/undefined.webp 1x');
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+
+
+
   image.alt = restaurant.name;
   li.append(image);
 

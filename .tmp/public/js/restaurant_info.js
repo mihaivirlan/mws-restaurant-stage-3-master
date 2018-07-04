@@ -67,13 +67,13 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const favImage = document.querySelector('.fav-image');
 
   if(restaurant.is_favorite === 'false'){
-    favImage.src = "../icons/star-empty.png";
+    favImage.src = "../icons/star-empty.webp";
     favImage.setAttribute('data-val', 'false');
   } else if(restaurant.is_favorite === 'true') {
-    favImage.src = "../icons/star-fav-full.png";
+    favImage.src = "../icons/star-fav-full.webp";
     favImage.setAttribute('data-val', 'true');
   } else {
-    favImage.src = "../icons/star-empty.png";
+    favImage.src = "../icons/star-empty.webp";
     favImage.setAttribute('data-val', 'false');
   }
 
@@ -86,7 +86,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   }
 
   // fill reviews
-  fetch('../reviews/?restaurant_id=' + getParameterByName('id'), { method: 'GET', headers: { 'Content-type': 'application/json; charset=UTF-8' }})
+  fetch(API_PATH + '/reviews/?restaurant_id=' + getParameterByName('id'), { method: 'GET', headers: { 'Content-type': 'application/json; charset=UTF-8' }})
   .then(response => {
     return response.json();
   })
@@ -239,6 +239,7 @@ getParameterByName = (name, url) => {
 };
 
 //CUSTOM
+
 // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -251,6 +252,8 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal
 btn.onclick = function() {
     modal.style.display = "block";
+    var inputFname = document.getElementById('fname');
+    inputFname.focus();
 };
 
 // When the user clicks on <span> (x), close the modal
@@ -264,6 +267,9 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 };
+
+
+
 // Function change content stars
 function change(img) {
     var datastar = parseInt(img.getAttribute('data-star'));
@@ -271,23 +277,21 @@ function change(img) {
     var rating = document.querySelector('.rating-review');
     var currentRating = parseInt(rating.getAttribute('value'));
     var today = new Date();
+    var stars = document.querySelectorAll('img[data-star]');
 
-    if (datastar-1 === currentRating || datastar ===currentRating) {
-
-        if (datavalue === 'off') {
-            img.src = '../icons/star-full.png';
-            img.setAttribute('data-value', 'on');
-            rating.setAttribute('value', parseInt(currentRating) + 1);
-        } else if (datavalue === 'on') {
-            img.src = '../icons/star-empty.png';
-            img.setAttribute('data-value', 'off');
-            rating.setAttribute('value', parseInt(currentRating) - 1);
+    stars.forEach(star => {
+        if(star.getAttribute('data-star')<= datastar ){
+            star.src = '../icons/star-full.webp';
+            star.setAttribute('data-value', 'on');
+            rating.setAttribute('value', datastar);
         } else {
-            console.log('uncaught exception')
+            star.src = '../icons/star-empty.webp';
+            star.setAttribute('data-value', 'off');
+            rating.setAttribute('value', datastar);
+
         }
 
-    }
-
+    });
 }
 
 function updateFavorite(){
@@ -295,16 +299,16 @@ function updateFavorite(){
   var is_fav = 'false';
 
   if (favImg.getAttribute('data-val') === 'false'){
-      favImg.src = '../icons/star-fav-full.png';
+      favImg.src = '../icons/star-fav-full.webp';
       favImg.setAttribute('data-val', 'true');
       is_fav = 'true';
   } else {
-      favImg.src = '../icons/star-empty.png';
+      favImg.src = '../icons/star-empty.webp';
       favImg.setAttribute('data-val', 'false');
       is_fav = 'false';
   }
 
-  fetch('../restaurants/' + getParameterByName('id') + '/?is_favorite=' + is_fav, { method: 'PUT'});
+  fetch(API_PATH + '/restaurants/' + getParameterByName('id') + '/?is_favorite=' + is_fav, { method: 'PUT'});
 
 }
 

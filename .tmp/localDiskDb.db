@@ -21,7 +21,7 @@
           "Sunday": "12:00 pm - 4:00 pm, 5:30 pm - 11:00 pm"
         },
         "createdAt": 1504095563444,
-        "updatedAt": "2018-07-01T21:05:27.096Z",
+        "updatedAt": "2018-07-03T16:19:54.917Z",
         "id": 1,
         "is_favorite": "false",
         "firstname": "",
@@ -47,8 +47,8 @@
           "Sunday": "12:00 pm - 3:00 pm, 5:00 pm - 11:00 pm"
         },
         "createdAt": 1504095568414,
-        "updatedAt": "2018-07-01T15:18:33.204Z",
-        "is_favorite": "true",
+        "updatedAt": "2018-07-03T18:53:14.364Z",
+        "is_favorite": "false",
         "id": 2
       },
       {
@@ -537,6 +537,69 @@
         "createdAt": "2018-07-01T21:03:56.508Z",
         "updatedAt": "2018-07-01T21:03:56.508Z",
         "id": 32
+      },
+      {
+        "restaurant_id": "",
+        "name": "mihaivirlan",
+        "rating": "4",
+        "comments": "Good restaurant!",
+        "createdAt": "2018-07-03T08:25:18.237Z",
+        "updatedAt": "2018-07-03T08:25:18.237Z",
+        "id": 33
+      },
+      {
+        "restaurant_id": "1",
+        "name": "andrei",
+        "rating": "4",
+        "comments": "second review",
+        "createdAt": "2018-07-03T09:39:25.085Z",
+        "updatedAt": "2018-07-03T09:39:25.085Z",
+        "id": 34
+      },
+      {
+        "restaurant_id": "1",
+        "name": "andrei",
+        "rating": "4",
+        "comments": "second review",
+        "createdAt": "2018-07-03T09:39:29.309Z",
+        "updatedAt": "2018-07-03T09:39:29.309Z",
+        "id": 35
+      },
+      {
+        "restaurant_id": "1",
+        "name": "microsoft",
+        "rating": "5",
+        "comments": "the better restaurant!",
+        "createdAt": "2018-07-03T09:52:05.357Z",
+        "updatedAt": "2018-07-03T09:52:05.357Z",
+        "id": 36
+      },
+      {
+        "restaurant_id": "1",
+        "name": "microsoft",
+        "rating": "5",
+        "comments": "the better restaurant!",
+        "createdAt": "2018-07-03T09:52:34.285Z",
+        "updatedAt": "2018-07-03T09:52:34.285Z",
+        "id": 37
+      },
+      {
+        "restaurant_id": "1",
+        "name": "microsoft",
+        "rating": "5",
+        "comments": "the better restaurant!",
+        "createdAt": "2018-07-03T09:52:46.390Z",
+        "updatedAt": "2018-07-03T09:52:46.390Z",
+        "id": 38
+      },
+      {
+        "restaurant_id": "1",
+        "name": "",
+        "rating": "0",
+        "comments": "",
+        "createdAt": "2018-07-03T10:00:20.372Z",
+        "updatedAt": "2018-07-03T10:00:20.372Z",
+        "id": 39
       }
     ]
   },
@@ -592,7 +655,7 @@
       "id": 11
     },
     "reviews": {
-      "id": 32
+      "id": 39
     }
   }
 }

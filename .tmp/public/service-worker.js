@@ -1,27 +1,58 @@
-importScripts('idb.js');
+importScripts('../js/idb.js');
+importScripts('../js/dbhelper.js');
 
 var cacheName = 'v1';
 var contentImgsCache = 'imgs';
 
 var cacheFiles = [
-    '../js/index.html',
-    '../js/restaurant.html',
+    '../index.html',
+    '../restaurant.html',
+    '../js/restaurant_info.js',
     '../css/styles.css',
     '../css/desktop.css',
     '../css/tablet.css',
     '../css/mobile.css',
     '../js/dbhelper.js',
+    '../app.js',
     '../js/main.js',
-    '../manifest.json'
+    '../manifest.json',
+    '../',
+    '../js/idb.js'
 ];
+
+var cacheImages = [
+    '../img/1.webp',
+    '../img/2.webp',
+    '../img/3.webp',
+    '../img/4.webp',
+    '../img/5.webp',
+    '../img/6.webp',
+    '../img/7.webp',
+    '../img/8.webp',
+    '../img/9.webp',
+    '../img/undefined.webp',
+    '../icons/star-empty.webp',
+    '../icons/star-fav-full.webp',
+    '../icons/star-full.webp'
+]
 
 //Ran when SW is installed. Creates Cache
 self.addEventListener('install', function (event) {
     console.log("[ServiceWorker] Installed");
     event.waitUntil(
+
         caches.open(cacheName).then(function (cache) {
         return cache.addAll(cacheFiles);
-    }));
+        }).then(
+            caches.open(contentImgsCache).then(function (cache) {
+                return cache.addAll(cacheImages);
+            })
+        )
+
+
+
+
+    );
 });
 
 //Service Worker Activate
@@ -34,7 +65,7 @@ self.addEventListener('activate', function(event) {
         caches.keys().then(function(cacheNames) {
             return Promise.all(
                 cacheNames.filter(function(cacheValue) {
-                    if(cacheValue !== cacheName) return true;
+                    if(cacheValue !== cacheName && cacheValue !== contentImgsCache ) return true;
                 }).map(function(cacheValue) {
                     return caches.delete(cacheValue);
                 })
@@ -48,7 +79,14 @@ self.addEventListener('fetch', function(event) {
   var requestUrl = new URL(event.request.url);
 
 
-  if (requestUrl.origin === location.origin) {
+
+  //Example added today!!!
+  var apiUrl = new URL(API_PATH);
+  // if (requestUrl.origin === location.origin || requestUrl.origin === apiUrl.origin )
+  //End example
+
+   /*if (requestUrl.origin === location.origin)*/
+   if (requestUrl.origin === location.origin || requestUrl.origin === apiUrl.origin ) {
 
       //HANDLING POST REQUESTS
        if(event.request.method === "POST" && requestUrl.pathname.includes('/restaurant.html')){
@@ -85,7 +123,7 @@ self.addEventListener('fetch', function(event) {
                    })
               ).then( () => {
 
-                    fetch('../reviews/', { method: 'POST',
+                    fetch(API_PATH + '/reviews/', { method: 'POST',
                                           headers: {
                                                     'Accept': 'application/json',
                                                     'Content-Type': 'application/json'
@@ -98,7 +136,7 @@ self.addEventListener('fetch', function(event) {
 
           //reloads current page
            event.respondWith(
-              fetch('../js/restaurant.html?id=' + sendReview['restaurant_id'] , {method: 'GET'})
+              fetch('../restaurant.html?id=' + sendReview['restaurant_id'] , {method: 'GET'})
            )
        }
 
@@ -137,20 +175,56 @@ self.addEventListener('fetch', function(event) {
               })
           )
 
-      } else if( requestUrl.pathname.startsWith('/img/') && event.request.url.endsWith('.webp')){
-          event.respondWith(serveImg(event.request));
-          return
+      }
 
-      } else {
+      // else if( requestUrl.pathname.includes('img') && event.request.url.endsWith('.webp')){
+      //     event.respondWith(serveImg(event.request));
+      //
+      // }
+
+       else if(requestUrl.pathname.includes('/reviews') && requestUrl.searchParams.get("restaurant_id")){
+           event.respondWith(
+               caches.open(cacheName).then(function(cache) {
+                   return cache.match(event.request).then(function(response) {
+                       var fetchPromise = fetch(event.request).then(function(networkResponse) {
+                           cache.put(event.request, networkResponse.clone());
+                           return networkResponse;
+                       })
+                       return response || fetchPromise;
+                   })
+               })
+       )
+       }
+
+       else if(requestUrl.pathname.includes('/restaurant.html') && requestUrl.searchParams.get("id")){
+            event.respondWith(
+
+                caches.open(cacheName).then(function(cache) {
+                    return cache.match(event.request).then(function(response) {
+                        var fetchPromise = fetch(event.request).then(function(networkResponse) {
+                            cache.put(event.request, networkResponse.clone());
+                            return networkResponse;
+                        })
+                        return response || fetchPromise;
+                    })
+                })
+
+            )
+
+       }
+
+      else {
           event.respondWith(
+
               caches.match(event.request).then(function(response) {
                   if (response) {
                       return response;
                   }
-                  return fetch(event.request)
+                  return fetch(event.request);
               }).catch(function(error) {
                   console.log(error)
               })
+
           );
       }
 
@@ -176,7 +250,7 @@ function createIndexedDB() {
 
 
 function fetchRestaurantsJSON() {
-  fetch('../restaurants')
+  fetch(API_PATH + '/restaurants')
   .then((resp) => resp.json())
   .then((resp)=> {
     var dbPromise = idb.open('data');
@@ -197,7 +271,7 @@ function fetchRestaurantsJSON() {
 }
 
 function fetchReviewsJSON() {
-  fetch('../reviews')
+  fetch(API_PATH + '/reviews')
   .then((resp) => resp.json())
   .then((resp)=> {
     var dbPromise = idb.open('data');
@@ -220,7 +294,7 @@ function fetchReviewsJSON() {
 
 
 function serveImg(request) {
-  var storageUrl = request.url.replace(/-\dx\.jpg$/, '');
+  var storageUrl = request.url.replace(/-\dx\.webp$/, '');
     return caches.open(contentImgsCache).then(function(cache) {
       return cache.match(storageUrl).then(function(response) {
         var networkFetch = fetch(request).then(function(networkResponse) {
