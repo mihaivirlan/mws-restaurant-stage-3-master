@@ -31,10 +31,12 @@ Great, you are ready to proceed forward; awesome!
 
 Let's start with running commands in your terminal, known as command line interface (CLI)
 ###### Install node.js/npm on your machine
+```
 # apt-get install nodejs
 # apt-get install npm
 # nodejs -v
 # npm -v
+```
 
 ###### Install project dependancies
 ```Install project dependancies

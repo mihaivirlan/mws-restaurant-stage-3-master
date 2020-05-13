@@ -21,7 +21,7 @@
           "Sunday": "12:00 pm - 4:00 pm, 5:30 pm - 11:00 pm"
         },
         "createdAt": 1504095563444,
-        "updatedAt": "2018-07-03T16:19:54.917Z",
+        "updatedAt": "2020-05-13T10:50:09.078Z",
         "id": 1,
         "is_favorite": "false",
         "firstname": "",
@@ -244,9 +244,9 @@
       },
       {
         "createdAt": "2018-07-01T12:25:58.477Z",
-        "updatedAt": "2018-07-01T21:05:58.419Z",
+        "updatedAt": "2020-05-13T10:48:43.981Z",
         "id": 11,
-        "is_favorite": "false"
+        "is_favorite": "true"
       }
     ],
     "reviews": [
@@ -600,6 +600,24 @@
         "createdAt": "2018-07-03T10:00:20.372Z",
         "updatedAt": "2018-07-03T10:00:20.372Z",
         "id": 39
+      },
+      {
+        "restaurant_id": "11",
+        "name": "test review at Mihail Virlan",
+        "rating": "5",
+        "comments": "This is the best restaurant from neighbour",
+        "createdAt": "2020-05-13T10:48:16.912Z",
+        "updatedAt": "2020-05-13T10:48:16.912Z",
+        "id": 40
+      },
+      {
+        "restaurant_id": "11",
+        "name": "test review at Mihail Virlan",
+        "rating": "5",
+        "comments": "This is the best restaurant from neighbour",
+        "createdAt": "2020-05-13T10:48:25.157Z",
+        "updatedAt": "2020-05-13T10:48:25.157Z",
+        "id": 41
       }
     ]
   },
@@ -655,7 +673,7 @@
       "id": 11
     },
     "reviews": {
-      "id": 39
+      "id": 41
     }
   }
 }
