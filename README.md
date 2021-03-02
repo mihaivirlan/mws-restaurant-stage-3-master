@@ -1,3 +1,6 @@
+# Application deployed on DigitalOcean Cloud
+- https://mws-restaurant-mbzna.ondigitalocean.app/
+
 # Local Development API Server
 ## Usage
 #### Get Restaurants
